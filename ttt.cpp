@@ -9,5 +9,10 @@ int main() {
     char computer = 'O';
     bool running = true;
     drawBoard(spaces);
-    
+
+    while(running){
+        playerMove(spaces, player);
+        drawBoard(spaces);
+        
+    }
 }
