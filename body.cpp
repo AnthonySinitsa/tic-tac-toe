@@ -39,12 +39,64 @@ void computerMove(char *spaces, char computer){
         }
     }
 }
+
 bool checkWinner(char *spaces, char player, char computer){
-    if(spaces[0] != ' ' && spaces[0] == spaces[1] && spaces[1] == spaces[2]){
-        spaces[0] = player ? std::cout << "YOU WIN!\n" : std::cout << "YOU LOSE HAHAHA\n";
+    // Check rows
+    for(int i = 0; i < 9; i += 3){
+        if(spaces[i] != ' ' && spaces[i] == spaces[i+1] && spaces[i+1] == spaces[i+2]){
+            if(spaces[i] == player){
+                std::cout << "YOU WIN!\n";
+                return true;
+            } else if(spaces[i] == computer){
+                std::cout << "YOU LOSE HAHAHA\n";
+                return true;
+            }
+        }
     }
-    return 0;
+
+    // Check columns
+    for(int i = 0; i < 3; i++){
+        if(spaces[i] != ' ' && spaces[i] == spaces[i+3] && spaces[i+3] == spaces[i+6]){
+            if(spaces[i] == player){
+                std::cout << "YOU WIN!\n";
+                return true;
+            } else if(spaces[i] == computer){
+                std::cout << "YOU LOSE HAHAHA\n";
+                return true;
+            }
+        }
+    }
+
+    // Check diagonals
+    if(spaces[0] != ' ' && spaces[0] == spaces[4] && spaces[4] == spaces[8]){
+        if(spaces[0] == player){
+            std::cout << "YOU WIN!\n";
+            return true;
+        } else if(spaces[0] == computer){
+            std::cout << "YOU LOSE HAHAHA\n";
+            return true;
+        }
+    }
+    if(spaces[2] != ' ' && spaces[2] == spaces[4] && spaces[4] == spaces[6]){
+        if(spaces[2] == player){
+            std::cout << "YOU WIN!\n";
+            return true;
+        } else if(spaces[2] == computer){
+            std::cout << "YOU LOSE HAHAHA\n";
+            return true;
+        }
+    }
+
+    return false;
 }
+
+
 bool checkTie(char *spaces){
-    return 0;
+    for(int i = 0; i < 9; i++){
+        if(spaces[i] == ' '){
+            return false;
+        }
+    }
+    std::cout << "TIE\n";
+    return true;
 }
