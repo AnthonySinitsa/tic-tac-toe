@@ -40,6 +40,9 @@ void computerMove(char *spaces, char computer){
     }
 }
 bool checkWinner(char *spaces, char player, char computer){
+    if(spaces[0] != ' ' && spaces[0] == spaces[1] && spaces[1] == spaces[2]){
+        spaces[0] = player ? std::cout << "YOU WIN!\n" : std::cout << "YOU LOSE HAHAHA\n";
+    }
     return 0;
 }
 bool checkTie(char *spaces){

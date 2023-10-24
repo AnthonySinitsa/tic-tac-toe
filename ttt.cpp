@@ -8,14 +8,22 @@ int main() {
     char player = 'X';
     char computer = 'O';
     bool running = true;
-    
+
     drawBoard(spaces);
 
     while(running){
         playerMove(spaces, player);
         drawBoard(spaces);
+        if(checkWinner(spaces, player, computer)){
+            running = false;
+            break;
+        }
 
         computerMove(spaces, computer);
         drawBoard(spaces);
+        if(checkWinner(spaces, player, computer)){
+            running = false;
+            break;
+        }
     }
 }
